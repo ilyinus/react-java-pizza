@@ -30,12 +30,32 @@
     ul {
       display: flex;
       flex: 1;
+      position: relative;
 
+        .pizza-type-selector {          
+          position: absolute;
+          height: 100%;
+          width: calc(50%);
+          border-radius: 5px;
+          background: #ffffff;          
+          transition: transform 250ms ease-in-out;
+        }  
+        
+        .pizza-size-selector {          
+          position: absolute;
+          height: 100%;
+          width: calc(33.3333%);
+          border-radius: 5px;
+          background: #ffffff;          
+          transition: transform 250ms ease-in-out;
+        }  
+      
       &:first-of-type {
         margin-bottom: 6px;
       }
 
       li {
+        z-index: 1;
         padding: 8px;
         flex: 1;
         cursor: pointer;
