@@ -11,6 +11,11 @@
 
   &__image {
     width: 260px;
+    transition: transform 100ms ease-in;
+  }
+
+  &__image:hover {
+    transform: scale(103%)
   }
 
   &__title {
@@ -38,7 +43,7 @@
           width: calc(50%);
           border-radius: 5px;
           background: #ffffff;          
-          transition: transform 250ms ease-in-out;
+          transition: transform 150ms ease-in-out;
         }  
         
         .pizza-size-selector {          
@@ -47,7 +52,7 @@
           width: calc(33.3333%);
           border-radius: 5px;
           background: #ffffff;          
-          transition: transform 250ms ease-in-out;
+          transition: transform 150ms ease-in-out;
         }  
       
       &:first-of-type {
