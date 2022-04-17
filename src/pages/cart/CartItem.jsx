@@ -1,7 +1,12 @@
 import React from 'react'
 
 const CartItem = React.memo(
-    ({ item, decreaseCountHandler, increaseCountHandler, removeItemsHanddler }) => {
+    ({
+        item,
+        decreaseCountHandler,
+        increaseCountHandler,
+        removeItemsHanddler
+    }) => {
 
         const decreaseCount = () => {
             decreaseCountHandler(item)
@@ -26,7 +31,7 @@ const CartItem = React.memo(
                 </div>
                 <div className="cart__item-info">
                     <h3>{item.name}</h3>
-                    <p>{`${item.typeTitle} тесто, ${item.size} см.`}</p>
+                    <p>{`${item.type.name}, ${item.size.size} см.`}</p>
                 </div>
                 <div className="cart__item-count">
                     <div className="button button--outline button--circle cart__item-count-minus"

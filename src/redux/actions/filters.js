@@ -1,9 +1,9 @@
 import { SET_CATEGORY, SET_SORTING, SET_SORT_BY } from './actionTypes'
 
-export const setCategory = index => {
+export const setCategory = category => {
     return {
         type: SET_CATEGORY,
-        payload: index
+        payload: category
     }
 }
 

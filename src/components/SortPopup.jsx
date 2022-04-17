@@ -1,6 +1,12 @@
 import React from 'react'
 
-export default React.memo(({ sortOptions, sorting, handler, sortBy, sortByHandler }) => {
+const sortOptions = [
+    { option: 'raiting', alias: 'популярность' },
+    { option: 'price', alias: 'цена' },
+    { option: 'name', alias: 'наименование' },
+]
+
+export default React.memo(({ sorting, handler, sortBy, sortByHandler }) => {
     const [popUp, setPopup] = React.useState(false)
     const ref = React.useRef()
 
