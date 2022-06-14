@@ -1,9 +1,9 @@
 import { SET_CATEGORY, SET_SORTING, SET_SORT_BY } from '../actions/actionTypes'
 
 const initialState = {
-    category: 0,
+    category: { id: 0, name: 'Все' },
     sorting: 'raiting',
-    sortBy: 'asc'
+    sortBy: 'desc'
 }
 
 const filters = (state = initialState, action) => {

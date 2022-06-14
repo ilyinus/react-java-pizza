@@ -2,37 +2,21 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Button from '../Button'
 
-const availableTypes = ['тонкое', 'традиционное']
-const availableSizes = [26, 30, 40]
-
 const PizzaBlock = React.memo(props => {
     const { id, name, imageUrl, types, sizes, price } = props.item
-    const { addToCartHandler, inCart } = props
+    const { addToCartHandler, inCart, availableTypes, availableSizes } = props
     const [curType, setCurType] = React.useState(types[0])
     const [curSize, setCurSize] = React.useState(sizes[0])
-
-    const setActiveType = (id, index) => {
-        const selector = document.querySelector(`#pizza-type-selector-${id}`)
-        selector.style.transform = `translateX(${100 * index}%)`
-    }
-
-    const setActiveSize = (id, index) => {
-        const selector = document.querySelector(`#pizza-size-selector-${id}`)
-        selector.style.transform = `translateX(${100 * index}%)`
-    }
 
     const renderTypes = () => {
         return availableTypes.map((type, index) => {
             return (
                 <li
                     key={index}
-                    className={!types.includes(index) ? 'disable' : ''}
-                    onClick={() => {
-                        setCurType(index)
-                        setActiveType(id, index)
-                    }}
+                    className={!types.includes(type.id) ? 'disable' : ''}
+                    onClick={() => setCurType(type.id)}
                 >
-                    {type}
+                    {type.name.split(' ')[0].toLowerCase()}
                 </li>
             )
         })
@@ -42,13 +26,10 @@ const PizzaBlock = React.memo(props => {
         return availableSizes.map((size, index) => {
             return <li
                 key={index}
-                className={!sizes.includes(size) ? 'disable' : ''}
-                onClick={() => {
-                    setCurSize(size)
-                    setActiveSize(id, index)
-                }}
+                className={!sizes.includes(size.id) ? 'disable' : ''}
+                onClick={() => setCurSize(size.id)}
             >
-                {size} см.
+                {size.size} см.
             </li>
         })
     }
@@ -58,9 +39,8 @@ const PizzaBlock = React.memo(props => {
             id,
             name,
             imageUrl,
-            type: curType,
-            typeTitle: availableTypes[curType],
-            size: curSize,
+            type: availableTypes.find(type => type.id === curType),
+            size: availableSizes.find(size => size.id === curSize),
             price,
             count: 1
         })
@@ -79,7 +59,7 @@ const PizzaBlock = React.memo(props => {
                     <div
                         id={`pizza-type-selector-${id}`}
                         className="pizza-type-selector"
-                        style={{ transform: `translateX(${100 * curType}%)` }}
+                        style={{ transform: `translateX(${100 * (curType - 1)}%)` }}
                     >
                     </div>
                     {renderTypes()}
@@ -91,7 +71,7 @@ const PizzaBlock = React.memo(props => {
                         style={
                             {
                                 transform:
-                                    `translateX(${100 * availableSizes.indexOf(curSize)}%)`
+                                    `translateX(${100 * (curSize - 1)}%)`
                             }
                         }
                     >

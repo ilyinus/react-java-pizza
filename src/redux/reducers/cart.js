@@ -22,7 +22,7 @@ const cart = (state = initialState, action) => {
 
 const addRemoveCartItem = (state, item, remove = false) => {
 
-    const id = `${item.id}_${item.type}_${item.size}`
+    const id = `${item.id}_${item.type.id}_${item.size.id}`
     const factor = remove ? -1 : 1
     const count = item.count * factor
 
